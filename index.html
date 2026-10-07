@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo prático de HTML e CSS demonstrando Box Model (Content, Padding, Border, Margin) e Flexbox com 20 elementos interativos.">
+    <title>Estudo Prático: Box Model & Flexbox 20x20</title>
+    <!-- CSS Externo via tag link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 1. Header Principal (Flexbox container 1) -->
+    <header class="app-header" id="el-1">
+        <div class="logo-box" id="el-2">
+            <span class="logo-icon">⚡</span>
+            <span class="logo-text">FlexBoxModel</span>
+        </div>
+        
+        <!-- 2. Barra de Navegação (Flexbox container 2) -->
+        <nav class="main-nav" id="el-3">
+            <a href="#hero" class="nav-item" id="el-4">Início</a>
+            <a href="#showcase" class="nav-item" id="el-5">Elementos</a>
+            <a href="#stats" class="nav-item" id="el-6">Métricas</a>
+            <a href="#contact" class="nav-item nav-item-cta" id="el-7">Explorar</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- 3. Seção Hero (Flexbox container 3) -->
+        <section class="hero-section" id="hero">
+            <div class="hero-card" id="el-8">
+                <span class="badge" id="el-9">🔥 Guia Prático</span>
+                <h1 class="hero-title" id="el-10">Dominando Box Model & Flexbox</h1>
+                <p class="hero-description" id="el-11">
+                    Exemplo didático completo com 20 elementos aplicando rigorosamente 
+                    <strong>Content</strong>, <strong>Padding</strong>, <strong>Border</strong>, <strong>Margin</strong> 
+                    e 20 propriedades do <strong>CSS Flexbox</strong> com layout responsivo e moderno.
+                </p>
+                <div class="hero-actions" id="el-12">
+                    <button class="btn btn-primary" id="el-13">Ver Demonstração</button>
+                    <button class="btn btn-outline" id="el-14">Documentação</button>
+                </div>
+            </div>
+
+            <!-- Painel Lateral de Status (Flexbox container 4) -->
+            <aside class="hero-sidebar" id="el-15">
+                <div class="status-widget" id="el-16">
+                    <div class="status-indicator"></div>
+                    <div class="status-info">
+                        <strong>Box Model Ativo</strong>
+                        <span>20/20 Elementos Configurados</span>
+                    </div>
+                </div>
+                <div class="mini-card" id="el-17">
+                    <h4>Flex Direction & Wrap</h4>
+                    <p>Layouts dinâmicos que se adaptam em qualquer resolução de tela.</p>
+                </div>
+            </aside>
+        </section>
+
+        <!-- 4. Seção de Cards (Showcase dos 20 Elementos / Flexbox Grid) -->
+        <section class="showcase-section" id="showcase">
+            <div class="section-heading">
+                <h2>Galeria de Componentes Flexbox</h2>
+                <p>Cada item demonstra manipulação de espaço, alinhamento, ordem e proporção.</p>
+            </div>
+
+            <div class="cards-grid" id="cards-container">
+                <!-- Elemento 18: Card Destaque -->
+                <article class="feature-card card-highlight" id="el-18">
+                    <div class="card-tag">Destaque 01</div>
+                    <h3>Flex Grow & Basis</h3>
+                    <p>Este elemento expande automaticamente para ocupar o espaço disponível usando flex-grow.</p>
+                    <div class="card-footer-info">
+                        <span>Flex: 2 1 280px</span>
+                    </div>
+                </article>
+
+                <!-- Elemento 19: Card de Alinhamento Self -->
+                <article class="feature-card card-align-self" id="el-19">
+                    <div class="card-tag">Alinhamento 02</div>
+                    <h3>Align-Self Custom</h3>
+                    <p>Demonstra sobreposição de alinhamento individual com a propriedade align-self.</p>
+                    <div class="card-footer-info">
+                        <span>Align-self: flex-end</span>
+                    </div>
+                </article>
+
+                <!-- Elemento 20: Card com Ordenação Customizada -->
+                <article class="feature-card card-order" id="el-20">
+                    <div class="card-tag">Ordem 03</div>
+                    <h3>Propriedade Order</h3>
+                    <p>Reorganização visual sem alterar a estrutura semântica do documento HTML.</p>
+                    <div class="card-footer-info">
+                        <span>Order: -1</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="app-footer">
+        <p>© 2026 Estudo HTML & CSS — Demonstração de Box Model e Flexbox</p>
+    </footer>
+
+</body>
+</html>

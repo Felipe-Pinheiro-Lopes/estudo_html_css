@@ -1,0 +1,605 @@
+/* ==========================================================================
+   ESTUDO PRÁTICO: CSS BOX MODEL & FLEXBOX (20 ELEMENTOS & 20+ PROPRIEDADES FLEX)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. RESET E VARIÁVEIS GLOBAIS
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #111827;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-accent: #6366f1;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --accent: #06b6d4;
+    --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.5);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;             /* [Flexbox 1] display: flex */
+    flex-direction: column;    /* [Flexbox 2] flex-direction: column */
+    justify-content: space-between; /* [Flexbox 3] justify-content: space-between */
+}
+
+/* ==========================================================================
+   CONFIGURAÇÃO DOS 20 ELEMENTOS (BOX MODEL: Content, Padding, Border, Margin)
+   E PROPRIEDADES DE FLEXBOX
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 1: Header Principal
+   -------------------------------------------------------------------------- */
+#el-1.app-header {
+    /* Box Model */
+    width: 100%;                          /* Content: Largura */
+    min-height: 80px;                     /* Content: Altura mínima */
+    padding: 18px 36px;                   /* Padding: Superior/Inferior 18px, Laterais 36px */
+    border-bottom: 2px solid var(--border-color); /* Border: 2px sólida */
+    margin: 0 0 24px 0;                   /* Margin: 24px inferior */
+
+    /* Flexbox Container */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: row;                  /* [Flexbox 4] flex-direction: row */
+    justify-content: space-between;       /* [Flexbox 3] justify-content: space-between */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    flex-wrap: wrap;                      /* [Flexbox 6] flex-wrap: wrap */
+    gap: 16px;                            /* [Flexbox 7] gap */
+
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 2: Logo Box
+   -------------------------------------------------------------------------- */
+#el-2.logo-box {
+    /* Box Model */
+    width: auto;                          /* Content */
+    height: 48px;                         /* Content */
+    padding: 6px 14px;                    /* Padding */
+    border: 1px solid var(--border-color);/* Border */
+    border-radius: var(--radius);
+    margin: 0 12px 0 0;                   /* Margin */
+
+    /* Flexbox */
+    display: inline-flex;                 /* [Flexbox 8] display: inline-flex */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    gap: 10px;                            /* [Flexbox 7] gap */
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.25rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 3: Menu de Navegação
+   -------------------------------------------------------------------------- */
+#el-3.main-nav {
+    /* Box Model */
+    width: auto;                          /* Content */
+    min-height: 44px;                     /* Content */
+    padding: 4px 8px;                     /* Padding */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Border */
+    border-radius: 30px;
+    margin: 0;                            /* Margin */
+
+    /* Flexbox */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: row;                  /* [Flexbox 4] flex-direction: row */
+    justify-content: flex-end;            /* [Flexbox 9] justify-content: flex-end */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    column-gap: 12px;                     /* [Flexbox 10] column-gap */
+    flex-wrap: wrap;                      /* [Flexbox 6] flex-wrap: wrap */
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTOS 4, 5, 6: Itens de Navegação
+   -------------------------------------------------------------------------- */
+#el-4.nav-item, #el-5.nav-item, #el-6.nav-item {
+    /* Box Model */
+    display: inline-block;
+    padding: 8px 16px;                    /* Padding */
+    border: 1px solid transparent;        /* Border */
+    border-radius: 8px;
+    margin: 0 4px;                        /* Margin */
+
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+#el-4.nav-item:hover, #el-5.nav-item:hover, #el-6.nav-item:hover {
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 7: Item CTA Navegação
+   -------------------------------------------------------------------------- */
+#el-7.nav-item-cta {
+    /* Box Model */
+    padding: 8px 20px;                    /* Padding */
+    border: 1px solid var(--primary);     /* Border */
+    border-radius: 20px;
+    margin-left: 8px;                     /* Margin */
+
+    color: #ffffff;
+    background: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#el-7.nav-item-cta:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   CONTEÚDO PRINCIPAL E SEÇÃO HERO
+   -------------------------------------------------------------------------- */
+.main-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    flex-grow: 1;                         /* [Flexbox 11] flex-grow: 1 */
+}
+
+.hero-section {
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-flow: row wrap;                  /* [Flexbox 12] flex-flow: row wrap */
+    justify-content: space-between;       /* [Flexbox 3] justify-content: space-between */
+    align-items: stretch;                 /* [Flexbox 13] align-items: stretch */
+    align-content: space-between;         /* [Flexbox 14] align-content: space-between */
+    row-gap: 24px;                        /* [Flexbox 15] row-gap */
+    column-gap: 24px;                     /* [Flexbox 10] column-gap */
+    margin-bottom: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 8: Hero Card Principal
+   -------------------------------------------------------------------------- */
+#el-8.hero-card {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    min-width: 320px;                     /* Content */
+    padding: 40px;                        /* Padding */
+    border: 1px solid var(--border-color);/* Border */
+    border-radius: var(--radius);
+    margin: 0 0 16px 0;                   /* Margin */
+
+    /* Flexbox Item + Container */
+    flex: 2 1 600px;                      /* [Flexbox 16] flex: grow shrink basis */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: column;               /* [Flexbox 2] flex-direction: column */
+    justify-content: center;              /* [Flexbox 17] justify-content: center */
+    align-items: flex-start;              /* [Flexbox 18] align-items: flex-start */
+    gap: 20px;                            /* [Flexbox 7] gap */
+
+    background: var(--bg-card);
+    box-shadow: var(--shadow-lg);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 9: Badge de Destaque
+   -------------------------------------------------------------------------- */
+#el-9.badge {
+    /* Box Model */
+    display: inline-flex;                 /* [Flexbox 8] display: inline-flex */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    padding: 6px 14px;                    /* Padding */
+    border: 1px solid rgba(6, 182, 212, 0.3); /* Border */
+    border-radius: 50px;
+    margin-bottom: 8px;                   /* Margin */
+
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(6, 182, 212, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 10: Título Hero (H1)
+   -------------------------------------------------------------------------- */
+#el-10.hero-title {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    padding: 4px 0;                       /* Padding */
+    border-left: 4px solid var(--primary);/* Border */
+    margin: 4px 0 12px 0;                 /* Margin */
+    padding-left: 12px;
+
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 11: Descrição Hero
+   -------------------------------------------------------------------------- */
+#el-11.hero-description {
+    /* Box Model */
+    max-width: 680px;                     /* Content */
+    padding: 12px 16px;                   /* Padding */
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.1); /* Border */
+    margin: 0 0 16px 0;                   /* Margin */
+
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 12: Hero Actions Container
+   -------------------------------------------------------------------------- */
+#el-12.hero-actions {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    padding: 10px 0;                      /* Padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Border */
+    margin-top: 8px;                      /* Margin */
+
+    /* Flexbox */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: row;                  /* [Flexbox 4] flex-direction: row */
+    justify-content: flex-start;          /* [Flexbox 19] justify-content: flex-start */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    gap: 16px;                            /* [Flexbox 7] gap */
+    flex-wrap: wrap;                      /* [Flexbox 6] flex-wrap: wrap */
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 13: Botão Primário
+   -------------------------------------------------------------------------- */
+#el-13.btn-primary {
+    /* Box Model */
+    height: 46px;                         /* Content */
+    padding: 0 24px;                      /* Padding */
+    border: 1px solid var(--primary);     /* Border */
+    border-radius: 8px;
+    margin-right: 4px;                    /* Margin */
+
+    /* Flexbox */
+    display: inline-flex;                 /* [Flexbox 8] display: inline-flex */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    justify-content: center;              /* [Flexbox 17] justify-content: center */
+    flex-shrink: 0;                       /* [Flexbox 20] flex-shrink: 0 */
+
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#el-13.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 14: Botão Outline
+   -------------------------------------------------------------------------- */
+#el-14.btn-outline {
+    /* Box Model */
+    height: 46px;                         /* Content */
+    padding: 0 24px;                      /* Padding */
+    border: 1px solid var(--border-color);/* Border */
+    border-radius: 8px;
+    margin: 0;                            /* Margin */
+
+    /* Flexbox */
+    display: inline-flex;                 /* [Flexbox 8] display: inline-flex */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    justify-content: center;              /* [Flexbox 17] justify-content: center */
+    flex-shrink: 0;                       /* [Flexbox 20] flex-shrink: 0 */
+
+    background: transparent;
+    color: var(--text-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#el-14.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 15: Sidebar / Lateral
+   -------------------------------------------------------------------------- */
+#el-15.hero-sidebar {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    padding: 24px;                        /* Padding */
+    border: 1px solid var(--border-color);/* Border */
+    border-radius: var(--radius);
+    margin: 0;                            /* Margin */
+
+    /* Flexbox */
+    flex: 1 1 300px;                      /* [Flexbox 16] flex */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: column;               /* [Flexbox 2] flex-direction: column */
+    justify-content: space-around;        /* [Flexbox 21] justify-content: space-around */
+    align-items: stretch;                 /* [Flexbox 13] align-items: stretch */
+    gap: 18px;                            /* [Flexbox 7] gap */
+
+    background: var(--bg-card);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 16: Status Widget
+   -------------------------------------------------------------------------- */
+#el-16.status-widget {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    padding: 16px;                        /* Padding */
+    border: 1px solid rgba(16, 185, 129, 0.3); /* Border */
+    border-radius: 10px;
+    margin: 0 0 8px 0;                    /* Margin */
+
+    /* Flexbox */
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: row;                  /* [Flexbox 4] flex-direction: row */
+    align-items: center;                  /* [Flexbox 5] align-items: center */
+    gap: 14px;                            /* [Flexbox 7] gap */
+
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #10b981;
+    box-shadow: 0 0 10px #10b981;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-info strong {
+    font-size: 0.95rem;
+    color: #10b981;
+}
+
+.status-info span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 17: Mini Card Lateral
+   -------------------------------------------------------------------------- */
+#el-17.mini-card {
+    /* Box Model */
+    width: 100%;                          /* Content */
+    padding: 16px;                        /* Padding */
+    border-left: 3px solid var(--accent); /* Border */
+    border-radius: 8px;
+    margin-top: 6px;                      /* Margin */
+
+    background: rgba(255, 255, 255, 0.02);
+}
+
+#el-17.mini-card h4 {
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+#el-17.mini-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   SEÇÃO SHOWCASE & GRID DE CARDS
+   -------------------------------------------------------------------------- */
+.showcase-section {
+    margin: 40px 0 60px 0;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+}
+
+.cards-grid {
+    display: flex;                        /* [Flexbox 1] display: flex */
+    flex-direction: row;                  /* [Flexbox 4] flex-direction: row */
+    flex-wrap: wrap;                      /* [Flexbox 6] flex-wrap: wrap */
+    justify-content: space-evenly;        /* [Flexbox 22] justify-content: space-evenly */
+    align-items: stretch;                 /* [Flexbox 13] align-items: stretch */
+    gap: 24px;                            /* [Flexbox 7] gap */
+    min-height: 280px;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, border-color 0.25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+}
+
+.card-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    flex-grow: 1;                         /* [Flexbox 11] flex-grow: 1 */
+    margin-bottom: 16px;
+}
+
+.card-footer-info {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: rgba(6, 182, 212, 0.08);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 18: Card Destaque (Flex Grow & Basis)
+   -------------------------------------------------------------------------- */
+#el-18.card-highlight {
+    /* Box Model */
+    min-width: 260px;                     /* Content */
+    min-height: 220px;                    /* Content */
+    padding: 24px;                        /* Padding */
+    border: 2px solid var(--border-accent);/* Border */
+    margin: 8px;                          /* Margin */
+
+    /* Flexbox Item Properties */
+    flex-grow: 2;                         /* [Flexbox 23] flex-grow: 2 */
+    flex-shrink: 1;                       /* [Flexbox 24] flex-shrink: 1 */
+    flex-basis: 300px;                    /* [Flexbox 25] flex-basis: 300px */
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 19: Card Align-Self
+   -------------------------------------------------------------------------- */
+#el-19.card-align-self {
+    /* Box Model */
+    min-width: 260px;                     /* Content */
+    min-height: 220px;                    /* Content */
+    padding: 24px;                        /* Padding */
+    border: 1px solid var(--border-color);/* Border */
+    margin: 8px;                          /* Margin */
+
+    /* Flexbox Item Properties */
+    flex: 1 1 260px;                      /* [Flexbox 16] flex shorthand */
+    align-self: flex-end;                 /* [Flexbox 26] align-self: flex-end */
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO 20: Card Order Customizado
+   -------------------------------------------------------------------------- */
+#el-20.card-order {
+    /* Box Model */
+    min-width: 260px;                     /* Content */
+    min-height: 220px;                    /* Content */
+    padding: 24px;                        /* Padding */
+    border: 1px dashed var(--accent);     /* Border */
+    margin: 8px;                          /* Margin */
+
+    /* Flexbox Item Properties */
+    flex: 1 1 260px;                      /* [Flexbox 16] flex shorthand */
+    order: -1;                            /* [Flexbox 27] order: -1 */
+    align-self: center;                   /* [Flexbox 28] align-self: center */
+}
+
+/* --------------------------------------------------------------------------
+   RODAPÉ
+   -------------------------------------------------------------------------- */
+.app-footer {
+    width: 100%;
+    padding: 24px 36px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    #el-1.app-header {
+        flex-direction: column;           /* [Flexbox 2] flex-direction: column */
+        align-items: flex-start;          /* [Flexbox 18] align-items: flex-start */
+        padding: 16px 20px;
+    }
+
+    #el-3.main-nav {
+        width: 100%;
+        justify-content: flex-start;      /* [Flexbox 19] justify-content: flex-start */
+    }
+
+    #el-8.hero-card {
+        padding: 24px 20px;
+    }
+
+    #el-10.hero-title {
+        font-size: 1.8rem;
+    }
+
+    #el-12.hero-actions {
+        flex-direction: column;           /* [Flexbox 2] flex-direction: column */
+        align-items: stretch;             /* [Flexbox 13] align-items: stretch */
+    }
+
+    #el-13.btn-primary, #el-14.btn-outline {
+        width: 100%;
+    }
+
+    #el-19.card-align-self, #el-20.card-order {
+        align-self: stretch;              /* [Flexbox 29] align-self: stretch */
+    }
+}
